@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { researchProjects } from '../../data/projects.js';
+---
+<BaseLayout title="Research — ZhongZhongYuan Portfolio" description="Academic research interests, projects and scholarly work.">
+  <section class="wrap page-intro"><div><span class="eyebrow">03 / ACADEMIC INQUIRY</span><h1>Research</h1></div><p>Research interests and academic investigations concerned with architecture, spatial experience, urban environments and visual methods.</p></section>
+  <section class="wrap home-section">
+    <div class="section-head"><h2>Research Interests</h2><span>AREAS OF INQUIRY</span></div>
+    <div class="three-column" style="padding:10px 0 45px"><article class="discipline"><span class="number">01</span><h3>Architecture & Place</h3><p>Relationships between built form, local identity, memory and everyday experience.</p></article><article class="discipline"><span class="number">02</span><h3>Urban Public Space</h3><p>Public environments, social interaction, accessibility and spatial experience.</p></article><article class="discipline"><span class="number">03</span><h3>Visual Research</h3><p>Photography, mapping and visual documentation as tools for spatial inquiry.</p></article></div>
+    <div class="section-head"><h2>Selected Research</h2><span>{String(researchProjects.length).padStart(2,'0')} ENTRIES</span></div>
+    <div class="research-list">{researchProjects.map(item=><article class="research-item"><span class="research-year">{item.year}</span><div><h3>{item.title}</h3><p>{item.summary}</p><span class="research-method">METHOD / {item.method}</span></div><span class="research-status">{item.status}</span></article>)}</div>
+    <p class="empty-note">Research entries are sample placeholders. Replace them with verified titles, abstracts, publications and downloadable documents before publishing.</p>
+  </section>
+</BaseLayout>

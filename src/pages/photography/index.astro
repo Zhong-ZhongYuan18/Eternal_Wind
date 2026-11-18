@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { photographyProjects } from '../../data/projects.js';
+const categories = ['All', ...new Set(photographyProjects.map(p=>p.category))];
+---
+<BaseLayout title="Photography — ZhongZhongYuan Portfolio" description="A visual archive of architecture, cities, landscapes and places.">
+  <section class="wrap page-intro"><div><span class="eyebrow">02 / VISUAL ARCHIVE</span><h1>Photography</h1></div><p>A collection of observations on architecture, urban life, landscape and the character of places. Images are arranged as ongoing visual notes.</p></section>
+  <section class="wrap home-section"><div class="filter-row" aria-label="Filter photographs">{categories.map((category,i)=><button class:list={['filter-btn',{active:i===0}]} data-filter={category}>{category.toUpperCase()}</button>)}</div>
+    <div class="photo-grid" id="photo-grid">{photographyProjects.map(photo=><figure class="photo-item" data-category={photo.category}><img src={photo.image} alt={photo.caption} loading="lazy"/><figcaption class="photo-caption"><span>{photo.title} <span style="color:#aaa">/ {photo.category}</span></span><span>{photo.year}</span></figcaption></figure>)}</div>
+  </section>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer"><button id="lightbox-close" aria-label="Close image">×</button><img id="lightbox-image" src="" alt="Expanded photograph"/></div>
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.photo-item');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      items.forEach(item => item.style.display = button.dataset.filter === 'All' || item.dataset.category === button.dataset.filter ? 'block' : 'none');
+    }));
+    const lightbox = document.querySelector('#lightbox');
+    const lightboxImage = document.querySelector('#lightbox-image');
+    document.querySelectorAll('.photo-item img').forEach(img => img.addEventListener('click', () => { lightboxImage.src = img.src; lightboxImage.alt = img.alt; lightbox.classList.add('open'); }));
+    const close = () => lightbox.classList.remove('open');
+    document.querySelector('#lightbox-close')?.addEventListener('click', close);
+    lightbox?.addEventListener('click', e => { if (e.target === lightbox) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  </script>
+</BaseLayout>

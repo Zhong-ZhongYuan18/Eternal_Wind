@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="About — ZhongZhongYuan Portfolio" description="About ZhongZhongYuan, architecture designer and researcher.">
+  <section class="wrap page-intro"><div><span class="eyebrow">PROFILE / BACKGROUND</span><h1>About</h1></div><p>A little about my approach, interests and the questions that guide my work.</p></section>
+  <section class="wrap about-grid">
+    <img class="about-image" src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=85" alt="Architectural form and light — replace with a personal portrait or project image"/>
+    <div class="about-copy"><h2>Architecture as a way of understanding the world.</h2><p>I am an architecture designer and researcher interested in how people experience, interpret and shape the built environment. My work moves between spatial design, visual documentation and academic inquiry.</p><p>This portfolio is an evolving record of selected projects, observations and research. It brings together different ways of looking at space, place and everyday life.</p>
+      <div class="info-block"><h3>EDUCATION</h3><p>Add your degree, institution and graduation year.</p></div>
+      <div class="info-block"><h3>EXPERIENCE</h3><p>Add relevant professional, internship and research experience.</p></div>
+      <div class="info-block"><h3>TOOLS</h3><p>AutoCAD · Rhino · Grasshopper · SketchUp · Adobe Creative Suite · Enscape</p></div>
+      <div class="info-block"><h3>CV</h3><p><a class="text-link" href={`${import.meta.env.BASE_URL}documents/cv.pdf`}>Download CV ↗</a> <span style="color:#999">(Add your CV PDF to public/documents.)</span></p></div>
+    </div>
+  </section>
+</BaseLayout>

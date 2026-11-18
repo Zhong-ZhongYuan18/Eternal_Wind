@@ -1,0 +1,1 @@
+Place your portfolio images in this directory, organized into architecture, photography and research folders. Replace the temporary remote image URLs in src/data/projects.js with your local image paths.

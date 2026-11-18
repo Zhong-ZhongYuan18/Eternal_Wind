@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { architectureProjects } from '../../data/projects.js';
+---
+<BaseLayout title="Architecture — ZhongZhongYuan Portfolio" description="Selected architectural design and spatial exploration projects.">
+  <section class="wrap page-intro"><div><span class="eyebrow">01 / SELECTED WORKS</span><h1>Architecture</h1></div><p>Spatial explorations, architectural proposals and investigations into the relationships between people, context and the built environment.</p></section>
+  <section class="wrap home-section"><div class="section-head"><h2>Projects</h2><span>{String(architectureProjects.length).padStart(2,'0')} PROJECTS</span></div><div class="project-grid">{architectureProjects.map((project,i)=><ProjectCard project={project} index={i+1}/>)}</div></section>
+</BaseLayout>

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { architectureProjects } from '../../data/projects.js';
+export function getStaticPaths(){ return architectureProjects.map((project)=>({params:{slug:project.slug},props:{project}})); }
+const { project } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title={`${project.title} — ZhongZhongYuan`} description={project.summary}>
+  <article class="wrap project-detail">
+    <div class="detail-heading"><div><span class="eyebrow">ARCHITECTURE / {project.category}</span><h1>{project.title}</h1></div><p>{project.brief}</p></div>
+    <img class="detail-hero" src={project.cover} alt={`${project.title} main view`} />
+    <div class="detail-meta"><div><span>YEAR</span><strong>{project.year}</strong></div><div><span>LOCATION</span><strong>{project.location}</strong></div><div><span>TYPE</span><strong>{project.category}</strong></div><div><span>ROLE</span><strong>{project.role}</strong></div></div>
+    <div class="detail-body"><h2>Project Overview</h2><p>{project.brief} This project page is a flexible template for presenting the design question, contextual research, concept development and final outcome. Replace this sample narrative with your own project documentation.</p></div>
+    <div class="detail-body"><h2>Process & Documentation</h2><p><strong>Tools:</strong> {project.tools}<br/><br/>Add site analysis, sketches, diagrams, plans, sections, models and visualisations to this sequence. Keep captions concise and explain the design decisions behind each image.</p></div>
+    <div class="detail-gallery">{project.images.map((src,i)=><img src={src} alt={`${project.title} project documentation ${i+1}`} loading="lazy" />)}</div>
+    <div style="display:flex;justify-content:space-between;margin-top:35px;font-size:11px"><a href={`${base}architecture/`}>← All architecture projects</a><a href={`${base}contact/`}>Discuss a project ↗</a></div>
+  </article>
+</BaseLayout>

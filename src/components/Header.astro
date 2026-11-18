@@ -1,0 +1,29 @@
+---
+const base = import.meta.env.BASE_URL;
+const links = [
+  { href: base, label: 'Home' },
+  { href: `${base}architecture/`, label: 'Architecture' },
+  { href: `${base}photography/`, label: 'Photography' },
+  { href: `${base}research/`, label: 'Research' },
+  { href: `${base}about/`, label: 'About' },
+];
+const current = Astro.url.pathname;
+---
+<header class="site-header wrap">
+  <a class="wordmark" href={base}>ZHONGZHONGYUAN<span>®</span></a>
+  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">MENU <span>＋</span></button>
+  <nav class="main-nav" aria-label="Main navigation">
+    {links.map((link) => <a class:list={[{ active: current === link.href || (link.href !== '/' && current.startsWith(link.href)) }]} href={link.href}>{link.label}</a>)}
+    <a href={`${base}contact/`} class:list={[{ active: current.endsWith('/contact/') }]}>Contact <span class="arrow">↗</span></a>
+  </nav>
+</header>
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav?.classList.toggle('open', !expanded);
+    toggle.querySelector('span').textContent = expanded ? '＋' : '－';
+  });
+</script>
