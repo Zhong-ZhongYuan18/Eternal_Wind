@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 
-// Replace 'zhongzhongyuan-portfolio' with your GitHub repository name if different.
 export default defineConfig({
-  site: 'https://Eternal_Wind.github.io',
+  site: 'https://zhong-zhongyuan18.github.io',
   base: '/Eternal_Wind',
 });
